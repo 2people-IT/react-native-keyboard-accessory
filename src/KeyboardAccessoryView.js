@@ -84,7 +84,9 @@ class KeyboardAccessoryView extends Component {
       ios: keyboardEvent.endCoordinates.height,
       android: this.props.androidAdjustResize
         ? 0
-        : keyboardEvent.endCoordinates.height
+        : this.props.layoutHeight > 0 
+          ? this.props.layoutHeight - keyboardEvent.endCoordinates.screenY 
+          : keyboardEvent.endCoordinates.height
     });
 
     const keyboardAnimate = () => {
@@ -195,6 +197,7 @@ KeyboardAccessoryView.propTypes = {
   hideBorder: PropTypes.bool,
   inSafeAreaView: PropTypes.bool,
   avoidKeyboard: PropTypes.bool,
+  layoutHeight: PropTypes.number,
 };
 
 KeyboardAccessoryView.defaultProps = {
@@ -208,6 +211,7 @@ KeyboardAccessoryView.defaultProps = {
   hideBorder: false,
   inSafeAreaView: false,
   avoidKeyboard: false,
+  layoutHeight: 0,
 }
 
 const styles = StyleSheet.create({

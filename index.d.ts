@@ -21,6 +21,7 @@ interface KeyboardAccessoryProps {
   inSafeAreaView?: boolean;
   androidAdjustResize?: boolean;
   avoidKeyboard?: boolean;
+  layoutHeight?: number;
 }
 
 export interface KeyboardAccessoryViewProps 
